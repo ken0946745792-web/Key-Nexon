@@ -1,9 +1,9 @@
 {
   "keys": [
     {
-      "key": "VIP12",
-      "expire": "2026-01-23",
-      "hwid": "6cdd9997-f050-4dc5-b205-f355e830025f"
+      "key": "VIP123",
+      "hwid": "HWID_DAN_TRONG_GAME",
+      "expire": "2026-01-23"
     }
   ]
 }
