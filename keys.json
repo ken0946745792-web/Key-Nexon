@@ -1,44 +1,19 @@
 {
   "keys": [
     {
-      "key": "KIET",
-      "expire": "2026-01-17"
-    }
-  ]
-}
-
-{
-  "keys": [
+      "key": "BON_EB2",
+      "expire": "2026-01-17",
+      "note": "Kiet Nghiem"
+    },
     {
-      "key": "DUCTRUNG",
-      "expire": "2026-01-17"
-    }
-  ]
-}
-
-{
-  "keys": [
+      "key": "VIP002",
+      "expire": "2026-02-01",
+      "note": "Key cho bạn B"
+    },
     {
-      "key": "TB",
-      "expire": "2026-01-17"
-    }
-  ]
-}
-
-{
-  "keys": [
-    {
-      "key": "TX",
-      "expire": "2026-01-17"
-    }
-  ]
-}
-
-{
-  "keys": [
-    {
-      "key": "TC",
-      "expire": "2026-01-17"
+      "key": "VIP003",
+      "expire": "2099-12-31",
+      "note": "Key vĩnh viễn"
     }
   ]
 }
