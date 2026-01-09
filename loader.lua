@@ -4,11 +4,16 @@ task.wait(6)
 local HttpService = game:GetService("HttpService")
 local RbxAnalytics = game:GetService("RbxAnalyticsService")
 
-local KEY_URL = "local KEY_URL = "https://raw.githubusercontent.com/khoinguyen123/key-system/main/keys.json"
+-- LINK RAW ĐÚNG
+local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/Key-Nexon/main/keys.json"
+
+-- CODE BẠN MUỐN BẢO VỆ
 local PROTECTED_CODE = "https://api.junkie-development.de/api/v1/luascripts/public/263a72050e733e52da77bcc7f8a7542cb082be906feaf87557be0442b36e797b/download"
 
 local USER_KEY = getgenv().USER_KEY
-if not USER_KEY then return warn("❌ Chưa nhập key") end
+if not USER_KEY then
+    return warn("❌ Chưa nhập key")
+end
 
 local HWID = RbxAnalytics:GetClientId()
 local TODAY = os.date("%Y-%m-%d")
@@ -22,21 +27,11 @@ for _, v in ipairs(data.keys) do
             return warn("❌ Key hết hạn")
         end
 
-        -- CHƯA BIND → IN HWID & KHÓA LUÔN
-        if v.hwid == "" then
-            warn("🔒 KEY CHƯA KÍCH HOẠT")
-            warn("HWID THIẾT BỊ:")
-            warn(HWID)
-            warn("👉 Key này sẽ CHỈ dùng cho thiết bị này")
-            return
-        end
-
-        -- ĐÃ BIND → SO SÁNH
         if v.hwid ~= HWID then
             return warn("❌ Key đã bị khóa trên thiết bị khác")
         end
 
-        -- OK
+        -- OK → CHẠY CODE GỐC
         loadstring(game:HttpGet(PROTECTED_CODE))()
         return
     end
