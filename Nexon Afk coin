@@ -1,0 +1,57 @@
+-- chờ game load
+repeat task.wait() until game:IsLoaded()
+task.wait(6)
+
+local HttpService = game:GetService("HttpService")
+local RbxAnalytics = game:GetService("RbxAnalyticsService")
+
+-- LINK RAW GITHUB
+local KEY_URL = "https://raw.githubusercontent.com/USERNAME/REPONAME/main/keys.json"
+
+-- CODE GỐC BẠN MUỐN BẢO VỆ
+local PROTECTED_CODE = "https://api.junkie-development.de/api/v1/luascripts/public/263a72050e733e52da77bcc7f8a7542cb082be906feaf87557be0442b36e797b/download"
+
+-- lấy key user nhập
+local USER_KEY = getgenv().USER_KEY
+if not USER_KEY then
+    warn("❌ Chưa nhập key")
+    return
+end
+
+-- lấy HWID
+local HWID = RbxAnalytics:GetClientId()
+local TODAY = os.date("%Y-%m-%d")
+
+-- tải key list
+local data = HttpService:JSONDecode(game:HttpGet(KEY_URL))
+
+for _, v in ipairs(data.keys) do
+    if v.key == USER_KEY then
+
+        -- check hạn
+        if TODAY > v.expire then
+            warn("❌ Key hết hạn")
+            return
+        end
+
+        -- bind HWID lần đầu
+        if v.hwid == "AUTO" then
+            warn("🔑 HWID CỦA BẠN:")
+            warn(HWID)
+            warn("👉 Gửi HWID này cho admin để kích hoạt")
+            return
+        end
+
+        -- check HWID
+        if v.hwid ~= HWID then
+            warn("❌ Sai HWID")
+            return
+        end
+
+        -- OK → chạy code gốc
+        loadstring(game:HttpGet(PROTECTED_CODE))()
+        return
+    end
+end
+
+warn("❌ Key không tồn tại")
