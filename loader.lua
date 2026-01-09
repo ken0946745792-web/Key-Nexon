@@ -1,27 +1,28 @@
 repeat task.wait() until game:IsLoaded()
-task.wait(2)
+task.wait(4)
 
 local HttpService = game:GetService("HttpService")
 local RbxAnalytics = game:GetService("RbxAnalyticsService")
 
--- chống cache GitHub (RẤT QUAN TRỌNG)
 local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/Key-Nexon/main/keys.json?ts=" .. os.time()
-
--- code cần bảo vệ
 local PROTECTED_CODE = "https://api.junkie-development.de/api/v1/luascripts/public/263a72050e733e52da77bcc7f8a7542cb082be906feaf87557be0442b36e797b/download"
 
--- lấy key người dùng nhập
+print("🔹 Loader start")
+
 local USER_KEY = getgenv().USER_KEY
+print("🔹 USER_KEY:", USER_KEY)
+
 if not USER_KEY then
-    return warn("❌ Chưa nhập key")
+    warn("❌ Chưa nhập USER_KEY")
+    return
 end
 
--- lấy HWID
 local HWID = RbxAnalytics:GetClientId()
+print("🔹 HWID:", HWID)
 
--- chuyển ngày -> timestamp
 local function toTime(date)
     local y,m,d = date:match("(%d+)%-(%d+)%-(%d+)")
+    if not y then return 0 end
     return os.time({
         year = tonumber(y),
         month = tonumber(m),
@@ -32,38 +33,46 @@ local function toTime(date)
     })
 end
 
--- load key data
-local success, response = pcall(function()
+local ok, raw = pcall(function()
     return game:HttpGet(KEY_URL)
 end)
 
-if not success then
-    return warn("❌ Không tải được key server")
+if not ok then
+    warn("❌ Không tải được keys.json")
+    return
 end
 
-local data = HttpService:JSONDecode(response)
+print("🔹 keys.json loaded")
+print(raw)
+
+local data = HttpService:JSONDecode(raw)
 if not data or not data.keys then
-    return warn("❌ Dữ liệu key lỗi")
+    warn("❌ keys.json sai cấu trúc")
+    return
 end
 
--- check key
 for _, v in ipairs(data.keys) do
+    print("🔸 Check key:", v.key)
+
     if v.key == USER_KEY then
+        print("✅ Key trùng")
 
-        -- check hạn
         if os.time() > toTime(v.expire) then
-            return warn("❌ Key hết hạn")
+            warn("❌ Key hết hạn:", v.expire)
+            return
         end
 
-        -- check HWID
         if v.hwid ~= HWID then
-            return warn("❌ Key đã bind thiết bị khác")
+            warn("❌ Sai HWID")
+            print("Server HWID:", v.hwid)
+            print("Client HWID:", HWID)
+            return
         end
 
-        -- OK → chạy code gốc
+        print("✅ OK → chạy code")
         loadstring(game:HttpGet(PROTECTED_CODE))()
         return
     end
 end
 
-warn("❌ K
+warn("❌ Không tìm thấy key")
