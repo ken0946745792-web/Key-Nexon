@@ -4,7 +4,7 @@ task.wait(6)
 local HttpService = game:GetService("HttpService")
 local RbxAnalytics = game:GetService("RbxAnalyticsService")
 
-local KEY_URL = "https://github.com/khoinguyen123/key-system"
+local KEY_URL = "local KEY_URL = "https://raw.githubusercontent.com/khoinguyen123/key-system/main/keys.json"
 local PROTECTED_CODE = "https://api.junkie-development.de/api/v1/luascripts/public/263a72050e733e52da77bcc7f8a7542cb082be906feaf87557be0442b36e797b/download"
 
 local USER_KEY = getgenv().USER_KEY
