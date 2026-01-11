@@ -1,12 +1,12 @@
 {
   "keys": [
     {
-      "key": "BON_EB2",
+      "key": "BON_EB",
       "expire": "2026-01-17",
       "note": "Kiet Nghiem"
     },
     {
-      "key": "BON_EB3",
+      "key": "BON_E",
       "expire": "2026-02-17",
       "note": "Duc Trung"
     },
