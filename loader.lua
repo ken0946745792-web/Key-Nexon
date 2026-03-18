@@ -12,7 +12,7 @@ local HttpService = game:GetService("HttpService")
 local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/Key-Nexon/main/keys.json?ts=" .. os.time()
 
 -- code gốc cần bảo vệ
-local PROTECTED_CODE = "https://api.jnkie.com/api/v1/luascripts/public/a6393b7e6cd5f2a7624befcf543203b0ba60cecb7fcc0ba7061a88233fec504c/download"
+local PROTECTED_CODE = "https://api.jnkie.com/api/v1/luascripts/public/8cc67c8fd7387e665c0fb86634ed197a0e983114e09b98e780d36f6a17080ece/download"
 
 local USER_KEY = getgenv().USER_KEY
 if not USER_KEY then
