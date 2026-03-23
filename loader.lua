@@ -9,7 +9,7 @@ end
 local HttpService = game:GetService("HttpService")
 
 -- chống cache GitHub
-local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/AFK/main/keys.json?ts=" .. os.time()
+local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/Key-Nexon/main/keys.json?ts=" .. os.time()
 
 -- code gốc cần bảo vệ
 local PROTECTED_CODE = "https://api.jnkie.com/api/v1/luascripts/public/8cc67c8fd7387e665c0fb86634ed197a0e983114e09b98e780d36f6a17080ece/download"
