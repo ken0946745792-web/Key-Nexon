@@ -17,10 +17,10 @@ local PROTECTED_CODE = "getgenv().RuajadCoinFarm = {
     Threshold             = 10000,                            -- Number only (e.g. 5000, 10000). Triggers sell when reaching this amount
     SellAmount            = 10000,                            -- Number only (e.g. 5000, 10000). Amount to sell per slot
     RequiredBatchCount    = 3,                                -- Number only (1 to 4). Number of different item types needed before selling
-    FarmMode              = { "Food", "Bones", "Resources" }, -- Must keep quotes! Examples: { "Food" } or { "Food", "Bones" } or { "Food", "Bones", "Resources" }
+    FarmMode              = { "Resources" }, -- Must keep quotes! Examples: { "Food" } or { "Food", "Bones" } or { "Food", "Bones", "Resources" }
     AutoWarpWorldsEnabled = true,                             -- Options: true / false (Auto-warps to highest available farm world)
     WorldBlacklist        = {},                               -- Skip unwanted worlds. Example: { "Grasslands", "Jungle" } or {} for none
-    AfkOverlayEnabled     = false,                            -- Options: true / false (Full-screen AFK status overlay with CPU saver)
+    AfkOverlayEnabled     = true,                            -- Options: true / false (Full-screen AFK status overlay with CPU saver)
 }
 
 -- [3] Coin Transfer Configuration (Market Stall Buyer)
