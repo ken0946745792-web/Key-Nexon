@@ -12,7 +12,7 @@ local HttpService = game:GetService("HttpService")
 local KEY_URL = "https://raw.githubusercontent.com/ken0946745792-web/Key-Nexon/main/keys.json?ts=" .. os.time()
 
 -- Code gốc cần bảo vệ
-local PROTECTED_CODE = "getgenv().RuajadCoinFarm = {
+"local PROTECTED_CODE = "getgenv().RuajadCoinFarm = {
     AutoSellEnabled       = true,                             -- Options: true / false (Auto-warps to Origins to sell items)
     Threshold             = 10000,                            -- Number only (e.g. 5000, 10000). Triggers sell when reaching this amount
     SellAmount            = 10000,                            -- Number only (e.g. 5000, 10000). Amount to sell per slot
